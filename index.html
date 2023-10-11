@@ -4,7 +4,7 @@
 <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Document</title>
+          <title>MealDB</title>
           <script src="https://cdn.tailwindcss.com"></script>
           <link rel="stylesheet" href="css/style.css">
 
@@ -43,7 +43,8 @@
                                                             class="absolute top-1/2 left-0 w-11/12 py-3 pl-12 rounded-md focus:outline-0"
                                                             placeholder="Search any food">
                                                   <label for="search-box"
-                                                            class="bg-[#FFC107] text-2xl text-black font-bold py-2 px-6 rounded-md absolute top-1/2 right-0 w-2/12 cursor-pointer">Search</label>
+                                                            class="bg-[#FFC107] text-2xl text-black font-bold py-2 px-6 rounded-md absolute top-1/2 right-0 w-2/12 cursor-pointer"
+                                                            id="search-box-btn">Search</label>
                                         </div>
                               </div>
                     </div>
@@ -51,6 +52,7 @@
 
           <!-- Food Items Section -->
           <section class="container mx-auto py-20">
+
                     <h2 class="pb-20 text-center font-bold text-4xl">Your Favourite Food</h2>
 
                     <!-- Food items container -->
@@ -58,8 +60,13 @@
 
                     </div>
 
+                    <!-- Show Spinner while loading -->
+                    <div class="py-20 flex justify-center hidden" id="spinner">
+                              <img src="./images/spinner.svg" alt="">
+                    </div>
+
                     <!-- Show All Button -->
-                    <div class="flex justify-center">
+                    <div class="flex justify-center hidden" id="all-food-btn">
                               <button class="text-xl font-bold bg-[#FFC107] px-10 py-3 rounded-md">Show All</button>
                     </div>
           </section>
@@ -121,7 +128,9 @@
 
           </div>
 
+          <script src="js/utilities.js"></script>
           <script src="js/script.js"></script>
+          <script src="js/modal.js"></script>
 </body>
 
 </html>

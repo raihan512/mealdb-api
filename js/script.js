@@ -1,25 +1,68 @@
-const foodContainer = document.getElementById("food-container");
-const mealModal = document.getElementById("meal-modal");
+let searchText;
+// Default Data loading state
+searchText = "b";
+loadData(searchText, false);
+// Load Data with search value
+searchBoxBtn.onclick = function () {
+  searchText = searchBox.value;
+  loadData(searchText, false);
+};
 
-// Load allmeals
-(async function loadmeals() {
-  const url = "https://www.themealdb.com/api/json/v1/1/search.php?f=c";
-  const data = await fetch(url);
-  const meals = await data.json();
-  showMeals(meals.meals);
-})();
+// -------------------------------------------------------Load Data from API-------------------------------------------------------
+async function loadData(searchText, showAllData) {
+  loading(true);
+  const url = `https://www.themealdb.com/api/json/v1/1/search.php?f=${searchText}`;
+  try {
+    const getData = await fetch(url);
+    const data = await getData.json();
+    processMeals(data.meals, showAllData);
+  } catch (err) {
+    processMeals([]);
+  }
+}
 
-// Show meals items to the UI
+// ---------------------------------------------------Process Meals based on Data---------------------------------------------------
+function processMeals(data, showAllData) {
+  // if show all btn clicked
+  if (showAllData) {
+    showMeals(data);
+  }
+  // if show all btn not clicked
+  else {
+    // if data is more than 6 then display show all btn
+    if (data.length > 6) {
+      showMeals(data.slice(0, 6));
+      allFoodBtn.classList.remove("hidden");
+    }
+    // if data is less than 6 then do not display show all btn
+    else {
+      showMeals(data);
+      allFoodBtn.classList.add("hidden");
+    }
+  }
+}
+
+// --------------------------------------------------Show all button click action--------------------------------------------------
+allFoodBtn.addEventListener("click", function () {
+  loadData(searchText, true);
+  allFoodBtn.classList.add("hidden");
+});
+
+// ----------------------------------------------------Display meals item to UI----------------------------------------------------
 const showMeals = (meals) => {
-  meals.forEach((meal) => {
-    const { idMeal, strMeal, strInstructions, strMealThumb } = meal;
+  foodContainer.innerHTML = "";
+  loading(false);
+  // if searched value has at least 1 data then show it to UI
+  if (meals.length > 0) {
+    meals.forEach((meal) => {
+      const { idMeal, strMeal, strInstructions, strMealThumb } = meal;
 
-    let newDiv = document.createElement("div");
-    newDiv.setAttribute(
-      "class",
-      "w-[580px] rounded-md overflow-hidden border flex items-center mb-8"
-    );
-    newDiv.innerHTML = `
+      let newDiv = document.createElement("div");
+      newDiv.setAttribute(
+        "class",
+        "w-[580px] rounded-md overflow-hidden border flex items-center mb-8"
+      );
+      newDiv.innerHTML = `
           <div class="w-[180px]">
             <img src="${strMealThumb}" alt="">
           </div>
@@ -38,64 +81,15 @@ const showMeals = (meals) => {
           </div>
     `;
 
-    foodContainer.appendChild(newDiv);
-  });
-};
-
-// Load meal by idMeal
-const loadMeal = async (mealId) => {
-  let url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
-  const data = await fetch(url);
-  const meal = await data.json();
-  showMeal(meal.meals[0]);
-};
-
-// Show meal to modal
-const showMeal = (meal) => {
-  const {
-    strMeal,
-    strMealThumb,
-    strCategory,
-    strInstructions,
-    strArea,
-    strYoutube,
-  } = meal;
-  mealModal.classList.remove("hidden");
-  mealModal.innerHTML = `
-  <div class="h-screen flex justify-center items-center">
-    <div class="w-[600px] bg-white rounded-md pt-1 pb-3 px-8">
-      <div class="flex justify-between items-center my-5 border-b">
-        <h3 class="text-3xl font-bold">${strMeal}</h3>
-        <img src="./images/cross.svg" class="cursor-pointer meal-modal-close" alt="">
-      </div>
-      <img src="${strMealThumb}" class="mb-3 h-40" alt="">
-      <div>
-        <p class="mb-2"><span class="font-bold">Category :</span> ${strCategory}</p>
-        <p class="mb-2"><span class="font-bold">Area :</span> ${strArea}</p>
-        <p class="mb-2 h-40 overflow-auto">
-          <span class="font-bold">Instructions :</span>
-          ${strInstructions}
-        </p>
-        <p class="mb-2">
-          <span class="font-bold">Youtube :</span>
-          ${strYoutube}
-        </p>
-      </div>
-      <div class="flex justify-end">
-        <button class="bg-[#DC3545] py-2 px-6 text-white rounded-md meal-modal-close">Close</button>
-      </div>
+      foodContainer.appendChild(newDiv);
+    });
+  }
+  // if searched values has no data the show this message
+  else {
+    foodContainer.innerHTML = `
+    <div class="py-20 w-full flex justify-center">
+      <h2 class="text-2xl text-center font-bold text-red-500">No Data has been found</h2>
     </div>
-  </div>
-  `;
-};
-
-// Close modal Functionality
-document.onclick = function (event) {
-  let targetedElement = event.target;
-  let getClasses = targetedElement.getAttribute("class");
-  if (getClasses.includes("meal-modal-close")) {
-    let mealModalDiv =
-      targetedElement.parentNode.parentNode.parentNode.parentNode;
-    mealModal.classList.add("hidden");
+    `;
   }
 };
