@@ -67,17 +67,17 @@ const showMeals = (meals) => {
             <img src="${strMealThumb}" alt="">
           </div>
           <div class="w-[400px] p-3">
-                    <h3 class="text-2xl font-bold">${
+                    <h3 class="md:text-2xl font-bold">${
                       strMeal.length > 20
                         ? strMeal.slice(0, 20) + " ..."
                         : strMeal
                     }</h3>
-                    <p class="text-xl py-1">${
+                    <p class="md:text-xl py-1">${
                       strInstructions.length > 70
                         ? strInstructions.slice(0, 70) + " ..."
                         : strInstructions
                     }</p>
-                    <button class="text-xl text-[#FFC107] underline" onclick="loadMeal(${idMeal})">View Details</button>
+                    <button class="md:text-xl text-[#FFC107] underline" onclick="loadMeal(${idMeal})">View Details</button>
           </div>
     `;
 

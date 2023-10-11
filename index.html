@@ -13,22 +13,24 @@
 <body>
           <!-- Header Section -->
           <header class="container mx-auto">
-                    <div class="flex justify-between py-10">
-                              <a href="" class="text-3xl font-bold">Tasty HUT</a>
-                              <button class="text-xl font-bold bg-[#FFC107] px-10 py-3 rounded-md">Sign Up</button>
+                    <div class="flex justify-between py-5 md:py-10">
+                              <a href="" class="text-2xl md:text-3xl font-bold">Tasty HUT</a>
+                              <button
+                                        class="text-lg md:text-xl font-bold bg-[#FFC107] px-6 md:px-10 py-1 md:py-3 rounded-md">Sign
+                                        Up</button>
                     </div>
           </header>
 
           <!-- Bannaer Section -->
-          <section class="container mx-auto md:py-56 2xl:py-80 relative bg-cover bg-center bg-no-repeat"
+          <section class="container mx-auto py-40 md:py-56 2xl:py-80 relative bg-cover bg-center bg-no-repeat"
                     style="background-image: url(./images/banner_1.png)">
                     <!-- Banner Overlay -->
                     <div class="absolute top-0 left-0 w-full h-full bg-black/75 flex justify-center items-center">
                               <div class="text-center px-8">
-                                        <h1 class="text-white md:text-5xl 2xl:text-6xl font-bold">
+                                        <h1 class="text-white text-3xl md:text-5xl 2xl:text-6xl font-bold">
                                                   Taste Our Delicious <br> Best Foods
                                         </h1>
-                                        <p class="text-white md:text-2xl 2xl:text-3xl py-10">
+                                        <p class="text-white  md:text-2xl 2xl:text-3xl py-2 md:py-10">
                                                   There are many variations of passages of Lorem Ipsum available, but
                                                   the majority
                                                   have
@@ -36,24 +38,23 @@
                                                   by injected humou.
                                         </p>
                                         <!-- Banner Search -->
-                                        <div class="relative w-8/12 mx-auto flex items-center">
-                                                  <img src="images/search.svg"
-                                                            class="absolute top-1/2 pt-3 pl-3 left-0 z-50" alt="">
-                                                  <input type="search" id="search-box"
-                                                            class="absolute top-1/2 left-0 w-11/12 py-3 pl-12 rounded-md focus:outline-0"
-                                                            placeholder="Search any food">
-                                                  <label for="search-box"
-                                                            class="bg-[#FFC107] text-2xl text-black font-bold py-2 px-6 rounded-md absolute top-1/2 right-0 w-2/12 cursor-pointer"
-                                                            id="search-box-btn">Search</label>
+                                        <div
+                                                  class="relative md:w-8/12 mx-auto flex items-center h-12 rounded-md bg-white overflow-hidden">
+                                                  <img src="images/search.svg" alt=""
+                                                            class=" absolute left-0 z-50 pl-3">
+                                                  <input type="search" id="search-box" placeholder="Search any food"
+                                                            class=" absolute left-0 w-full h-full pl-12 focus:outline-0">
+                                                  <label for="search-box" id="search-box-btn"
+                                                            class="bg-[#FFC107] absolute right-0 z-50 cursor-pointer h-full w-28 md:w-32 flex justify-center items-center rounded-md text-lg md:text-xl font-bold">Search</label>
                                         </div>
                               </div>
                     </div>
           </section>
-
+          <!-- placeholder="Search any food"> -->
           <!-- Food Items Section -->
           <section class="container mx-auto py-20">
 
-                    <h2 class="pb-20 text-center font-bold text-4xl">Your Favourite Food</h2>
+                    <h2 class="pb-10 md:pb-20 text-center font-bold text-2xl md:text-4xl">Your Favourite Food</h2>
 
                     <!-- Food items container -->
                     <div class="flex justify-between flex-wrap" id="food-container">
@@ -74,45 +75,45 @@
           <!-- Footer -->
           <footer class="bg-[#FFC107]/25 py-20">
 
-                    <div class="container mx-auto flex justify-between">
+                    <div class="container mx-auto flex flex-col md:flex-row justify-between">
                               <!-- Footer Item -->
                               <div class="w-1/12">
-                                        <h4 class="text-2xl font-bold">Section</h4>
-                                        <ul class="mt-10">
-                                                  <li class="text-xl">Home</li>
-                                                  <li class="text-xl">Features</li>
-                                                  <li class="text-xl">Pricing</li>
-                                                  <li class="text-xl">FAQs</li>
-                                                  <li class="text-xl">About</li>
+                                        <h4 class="text-xl md:text-2xl font-bold">Section</h4>
+                                        <ul class="mt-3 md:mt-10">
+                                                  <li class="md:text-xl">Home</li>
+                                                  <li class="md:text-xl">Features</li>
+                                                  <li class="md:text-xl">Pricing</li>
+                                                  <li class="md:text-xl">FAQs</li>
+                                                  <li class="md:text-xl">About</li>
                                         </ul>
                               </div>
                               <!-- Footer Item -->
                               <div class="w-2/12">
-                                        <h4 class="text-2xl font-bold">Services</h4>
-                                        <ul class="mt-10">
-                                                  <li class="text-xl">UIUX Design</li>
-                                                  <li class="text-xl">Product Design</li>
-                                                  <li class="text-xl">Back End Developer</li>
-                                                  <li class="text-xl">Front End Developer</li>
+                                        <h4 class="text-xl md:text-2xl font-bold">Services</h4>
+                                        <ul class="mt-3 md:mt-10">
+                                                  <li class="md:text-xl">UIUX Design</li>
+                                                  <li class="md:text-xl">Product Design</li>
+                                                  <li class="md:text-xl">Back End Developer</li>
+                                                  <li class="md:text-xl">Front End Developer</li>
                                         </ul>
                               </div>
                               <!-- Footer Item -->
                               <div class="w-2/12">
-                                        <h4 class="text-2xl font-bold">Resource</h4>
-                                        <ul class="mt-10">
-                                                  <li class="text-xl">FAQ</li>
-                                                  <li class="text-xl">Support</li>
-                                                  <li class="text-xl">Privacy Policy</li>
-                                                  <li class="text-xl">Terms of Service</li>
+                                        <h4 class="text-xl md:text-2xl font-bold">Resource</h4>
+                                        <ul class="mt-3 md:mt-10">
+                                                  <li class="md:text-xl">FAQ</li>
+                                                  <li class="md:text-xl">Support</li>
+                                                  <li class="md:text-xl">Privacy Policy</li>
+                                                  <li class="md:text-xl">Terms of Service</li>
                                         </ul>
                               </div>
                               <!-- Footer Item -->
                               <div class="w-4/12">
-                                        <h4 class="text-2xl font-bold">Subscribe to our newsletter</h4>
+                                        <h4 class="text-xl md:text-2xl font-bold">Subscribe to our newsletter</h4>
                                         <p class="py-5">There are many variations of passages of available, but the
                                                   majority have
                                                   suffered</p>
-                                        <div>
+                                        <div class="flex flex-wrap">
                                                   <input type="search" id="subscribe-box" placeholder="Email address"
                                                             class="p-3 focus:outline-0 rounded-md mr-2">
                                                   <label for="subscribe-box"
